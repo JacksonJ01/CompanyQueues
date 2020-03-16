@@ -121,8 +121,17 @@ while menu != 'Exit' or menu != '4':
             Inventory -= sell
             divider = 0
             total_cost = []
+            # This is not working as intended
             while sell - value >= 0:
-                if value - sell > 0 or value - sell == 0:
+                if sell - value > 0:
+                    sell -= value
+                    MyQueue.pop()
+                    value = MyQueue.head()
+                    total_cost.append(MyCost.head())
+                    MyCost.pop()
+                    divider += 1
+
+                elif value - sell > 0 or value - sell == 0:
                     if value - sell > 0:
                         value -= sell
                         MyQueue.re_head(value)
@@ -135,13 +144,6 @@ while menu != 'Exit' or menu != '4':
                         MyCost.pop()
                         divider += 1
                     break
-                if sell - value > 0:
-                    sell -= value
-                    MyQueue.pop()
-                    value = MyQueue.head()
-                    total_cost.append(MyCost.head())
-                    MyCost.pop()
-                    divider += 1
 
             made = sum(total_cost) / divider * 1.1 * sold
             profit = made - sum(total_cost) / divider * sold
