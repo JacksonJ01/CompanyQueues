@@ -131,7 +131,7 @@ while menu != 'Exit' or menu != '4':
                     total_cost.append(MyCost.head())
                     MyCost.pop()
                     divider += 1
-
+                # I think the problem arises here
                 elif value - sell > 0 or value - sell == 0:
                     if value - sell > 0:
                         value -= sell
@@ -148,7 +148,11 @@ while menu != 'Exit' or menu != '4':
             # I added this part because i wanted to see what was going o behind the scenes(where it was failing at)
             made = sum(total_cost) / divider * 1.1 * sold
             profit = made - sum(total_cost) / divider * sold
-            print(f'You made ${made: .2f}, with a ${profit: .2f} profit, {total_cost}, {sum(total_cost)}, {divider} {sold}.')
+            print(f'You made ${made: .2f}, with a ${profit: .2f} profit.'
+                  f'\ntotal_cost values {total_cost}'
+                  f'\ntotal_cost values summed up {sum(total_cost)}'
+                  f'\nhow many values to divide {divider}'
+                  f'\nhow many sold {sold}.')
 
     elif menu == 'Profit' or menu == '3':
         print(f'The current profit to date is ${Profit}.')
