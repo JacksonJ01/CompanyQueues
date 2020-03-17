@@ -122,6 +122,7 @@ while menu != 'Exit' or menu != '4':
             divider = 0
             total_cost = []
             # This is not working as intended
+            # If i want to sell 8 items and the first value is five, while the next is ten, something gets screwed up
             while sell - value >= 0:
                 if sell - value > 0:
                     sell -= value
@@ -144,7 +145,7 @@ while menu != 'Exit' or menu != '4':
                         MyCost.pop()
                         divider += 1
                     break
-
+            # I added this part because i wanted to see what was going o behind the scenes(where it was failing at)
             made = sum(total_cost) / divider * 1.1 * sold
             profit = made - sum(total_cost) / divider * sold
             print(f'You made ${made: .2f}, with a ${profit: .2f} profit, {total_cost}, {sum(total_cost)}, {divider} {sold}.')
