@@ -121,8 +121,6 @@ while menu != 'Exit' or menu != '4':
             Inventory -= sell
             divider = 0
             total_cost = []
-            # This is not working as intended
-            # If i want to sell 8 items and the first value is five, while the next is ten, something gets screwed up
             while sell - value >= 0:
                 if sell - value > 0:
                     sell -= value
@@ -131,32 +129,27 @@ while menu != 'Exit' or menu != '4':
                     total_cost.append(MyCost.head())
                     MyCost.pop()
                     divider += 1
-                    # I want to see where the program fails
                     print("chess")
                     if value - sell > 0:
                         value -= sell
                         MyQueue.re_head(value)
                         total_cost.append(MyCost.head())
                         divider += 1
-                        # I want to see where the program fails
                         print('bacon')
+                        break
 
                     elif value - sell == 0:
                         total_cost.append(MyCost.head())
                         MyQueue.pop()
                         MyCost.pop()
                         divider += 1
-                        # I want to see where the program fails
-                        print('eggs')
-                    break
-                # I think the problem arises here
+                        break
                 else:
                     if value - sell > 0:
                         value -= sell
                         MyQueue.re_head(value)
                         total_cost.append(MyCost.head())
                         divider += 1
-                        # I want to see where the program fails
                         print('bacon')
 
                     elif value - sell == 0:
@@ -164,17 +157,11 @@ while menu != 'Exit' or menu != '4':
                         MyQueue.pop()
                         MyCost.pop()
                         divider += 1
-                        # I want to see where the program fails
                         print('eggs')
                     break
-            # I added this part because i wanted to see what was going o behind the scenes(where it was failing at)
             made = sum(total_cost) / divider * 1.1 * sold
             profit = made - sum(total_cost) / divider * sold
-            print(f'You made ${made: .2f}, with a ${profit: .2f} profit.'
-                  f'\ntotal_cost values {total_cost}'
-                  f'\ntotal_cost values summed up {sum(total_cost)}'
-                  f'\nhow many values to divide {divider}'
-                  f'\nhow many sold {sold}.')
+            print(f'You made ${made: .2f}, with a ${profit: .2f} profit.')
 
     elif menu == 'Profit' or menu == '3':
         print(f'The current profit to date is ${Profit}.')
