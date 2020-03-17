@@ -23,7 +23,7 @@ print("\nI like that name a lot."
       f"\n{name}\b\b\b, {name}\b\b, {name}"
       f"\n{name} rolls off the tongue nicely.")
 
-sleep(2.5)
+sleep(2)
 print(f'\nAs you may know I, {terminal} (your terminal), have a FIFO inventory set up for you to use.'
       "\nAnd now that I've mentioned this, it's only natural for me to take you to the menu."
       "\nHave fun XD")
@@ -32,7 +32,7 @@ input("\nPress Enter")
 
 
 while menu != 'Exit' or menu != '4':
-    sleep(1)
+    sleep(.5)
     print(f'\nInventory: {Inventory}')
     menu = input('\n1. ADD to inventory'
                  '\n2. SELL from inventory'
@@ -131,19 +131,41 @@ while menu != 'Exit' or menu != '4':
                     total_cost.append(MyCost.head())
                     MyCost.pop()
                     divider += 1
-                # I think the problem arises here
-                elif value - sell > 0 or value - sell == 0:
+                    # I want to see where the program fails
+                    print("chess")
                     if value - sell > 0:
                         value -= sell
                         MyQueue.re_head(value)
                         total_cost.append(MyCost.head())
                         divider += 1
+                        # I want to see where the program fails
+                        print('bacon')
 
                     elif value - sell == 0:
                         total_cost.append(MyCost.head())
                         MyQueue.pop()
                         MyCost.pop()
                         divider += 1
+                        # I want to see where the program fails
+                        print('eggs')
+                    break
+                # I think the problem arises here
+                else:
+                    if value - sell > 0:
+                        value -= sell
+                        MyQueue.re_head(value)
+                        total_cost.append(MyCost.head())
+                        divider += 1
+                        # I want to see where the program fails
+                        print('bacon')
+
+                    elif value - sell == 0:
+                        total_cost.append(MyCost.head())
+                        MyQueue.pop()
+                        MyCost.pop()
+                        divider += 1
+                        # I want to see where the program fails
+                        print('eggs')
                     break
             # I added this part because i wanted to see what was going o behind the scenes(where it was failing at)
             made = sum(total_cost) / divider * 1.1 * sold
