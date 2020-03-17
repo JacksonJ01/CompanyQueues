@@ -129,13 +129,11 @@ while menu != 'Exit' or menu != '4':
                     total_cost.append(MyCost.head())
                     MyCost.pop()
                     divider += 1
-                    print("chess")
                     if value - sell > 0:
                         value -= sell
                         MyQueue.re_head(value)
                         total_cost.append(MyCost.head())
                         divider += 1
-                        print('bacon')
                         break
 
                     elif value - sell == 0:
@@ -150,15 +148,14 @@ while menu != 'Exit' or menu != '4':
                         MyQueue.re_head(value)
                         total_cost.append(MyCost.head())
                         divider += 1
-                        print('bacon')
+                        break
 
                     elif value - sell == 0:
                         total_cost.append(MyCost.head())
                         MyQueue.pop()
                         MyCost.pop()
                         divider += 1
-                        print('eggs')
-                    break
+                        break
             made = sum(total_cost) / divider * 1.1 * sold
             profit = made - sum(total_cost) / divider * sold
             print(f'You made ${made: .2f}, with a ${profit: .2f} profit.')
