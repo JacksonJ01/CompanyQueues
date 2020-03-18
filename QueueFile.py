@@ -12,7 +12,6 @@ Inventory = 0
 Profit = 0
 menu = 'Hello World'
 
-
 input("CLICK HERE, THEN PRESS ENTER")
 
 name = input("\nHello there user, what is your name?"
@@ -105,7 +104,7 @@ while menu != 'Exit' or menu != '4':
             cost = MyCost.head()
             if value > sell:
                 value -= sell
-                MyQueue.re_head(value)
+                MyQueue.push_head(value)
 
             elif value == sell:
                 MyQueue.pop()
@@ -121,17 +120,18 @@ while menu != 'Exit' or menu != '4':
             Inventory -= sell
             divider = 0
             total_cost = []
-            while sell - value >= 0:
+            while sell - value > 0:
                 if sell - value > 0:
                     sell -= value
                     MyQueue.pop()
-                    value = MyQueue.head()
                     total_cost.append(MyCost.head())
                     MyCost.pop()
                     divider += 1
+                    value = MyQueue.head()
                     if value - sell > 0:
                         value -= sell
-                        MyQueue.re_head(value)
+                        MyQueue.pop()
+                        MyQueue.push_head(value)
                         total_cost.append(MyCost.head())
                         divider += 1
                         break
@@ -140,20 +140,7 @@ while menu != 'Exit' or menu != '4':
                         total_cost.append(MyCost.head())
                         MyQueue.pop()
                         MyCost.pop()
-                        divider += 1
-                        break
-                else:
-                    if value - sell > 0:
-                        value -= sell
-                        MyQueue.re_head(value)
-                        total_cost.append(MyCost.head())
-                        divider += 1
-                        break
-
-                    elif value - sell == 0:
-                        total_cost.append(MyCost.head())
-                        MyQueue.pop()
-                        MyCost.pop()
+                        print(MyCost.head())
                         divider += 1
                         break
             made = sum(total_cost) / divider * 1.1 * sold
